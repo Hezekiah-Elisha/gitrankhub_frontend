@@ -1,7 +1,29 @@
+"use client"
 import { ModeToggle } from '@/components/ModeToggle'
+import { Button } from '@/components/ui/button';
+import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react';
 
 export default function TopNav() {
+    const handleGithubLogin = () => {
+        // loading from .env.local
+        const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
+        const redirectUri = 'http://localhost:3000/';
+        const scope = 'user:email';
+        const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=read:user`;
+        window.location.href = githubAuthUrl;
+    };
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+
+        if (!code) return;
+
+        // const target = `https://backend.com/external-signup?app=${appName}&accessToken=${code}&provider=github`;
+        // callBackendAPI("GET", target);
+    }, []);
+
     return (
         <nav className='p-4 flex flex-row justify-between items-center'>
             <h1 className='text-2xl font-bold font-sekuya font-poppins'>Gitrankhub</h1>
@@ -10,12 +32,18 @@ export default function TopNav() {
                 <Link href="/">
                     Home
                 </Link>
-                <Link href="/login">
-                    login
-                </Link>
-                <Link href="/signup">
-                    signup
-                </Link>
+                <div className="github-signin-container">
+                    <Button variant={"outline"} className="flex flex-row items-center gap-2 text-primary hover:text-secondary" onClick={handleGithubLogin}>
+                        <Image
+                            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png"
+                            alt="GitHub Icon"
+                            className="github-icon"
+                            width={20}
+                            height={20}
+                        />
+                        Sign in with GitHub
+                    </Button>
+                </div>
             </div>
         </nav>
     )
