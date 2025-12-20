@@ -3,16 +3,18 @@ import { ModeToggle } from '@/components/ModeToggle'
 import { Button } from '@/components/ui/button';
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function TopNav() {
+    const router = useRouter()
     const handleGithubLogin = () => {
         // loading from .env.local
         const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
         const redirectUri = 'http://localhost:3000/';
         const scope = 'user:email';
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=read:user`;
-        window.location.href = githubAuthUrl;
+        router.push(githubAuthUrl);
     };
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -32,7 +34,7 @@ export default function TopNav() {
                 <Link href="/">
                     Home
                 </Link>
-                <div className="github-signin-container">
+                <div className="flex flex-row items-center gap-4">
                     <Link href="/about">
                         About The Platform
                     </Link>

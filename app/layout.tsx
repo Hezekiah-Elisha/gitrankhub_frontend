@@ -3,6 +3,7 @@ import { Rubik, Poppins, Architects_Daughter } from "next/font/google";
 import "./globals.css";
 import TopNav from "./components/TopNav";
 import { ThemeProvider } from "@/components/theme-provider";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -37,16 +38,17 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${rubik.className} ${architects_daughter.className} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-
-          <TopNav />
-          {children}
-        </ThemeProvider>
+        <ReactQueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TopNav />
+            {children}
+          </ThemeProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
