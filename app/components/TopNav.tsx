@@ -33,6 +33,9 @@ export default function TopNav() {
                     Home
                 </Link>
                 <div className="github-signin-container">
+                    <Link href="/about">
+                        About The Platform
+                    </Link>
                     <Button variant={"outline"} className="flex flex-row items-center gap-2 text-primary hover:text-secondary" onClick={handleGithubLogin}>
                         <Image
                             src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png"
