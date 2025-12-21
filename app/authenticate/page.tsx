@@ -7,7 +7,6 @@ import { useSearchParams } from "next/navigation";
 export default function Page() {
     const searchParams = useSearchParams();
     const code = searchParams.get("code");
-    console.log("Authorization code:", code);
 
     const {data, error, isLoading} = useQuery({
         queryKey: ["githubAuth", code],
@@ -24,7 +23,7 @@ export default function Page() {
     <div>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {(error as Error).message}</p>}
-        {data && <p>Authentication successful! Welcome, {data.username}.</p>}
+        {data && <p>Authentication successful! Welcome, {data.user.username}.</p>}
     </div>
   )
 }
