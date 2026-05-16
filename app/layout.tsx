@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${rubik.className} ${architects_daughter.className} antialiased`}
+        className={`${poppins.variable} ${rubik.variable} ${architects_daughter.variable} antialiased`}
       >
         <ReactQueryProvider>
           <ThemeProvider

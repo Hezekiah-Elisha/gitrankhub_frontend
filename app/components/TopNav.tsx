@@ -1,7 +1,7 @@
 "use client"
 import { ModeToggle } from '@/components/ModeToggle'
 import { Button } from '@/components/ui/button';
-import { GithubIcon } from 'lucide-react';
+// import { GithubIcon } from 'lucide-react';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -39,7 +39,7 @@ export default function TopNav() {
                         About The Platform
                     </Link>
                     <Button variant={"outline"} className="flex flex-row items-center gap-2 text-primary hover:text-secondary hover:cursor-pointer" onClick={handleGithubLogin}>
-                        <GithubIcon size={16} />
+                        {/* <GithubIcon size={16} /> */}
                         Sign in with GitHub
                     </Button>
                 </div>
