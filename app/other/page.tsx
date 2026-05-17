@@ -54,6 +54,7 @@ export default function OtherPage() {
                 {repos?.map((repo: any) => (
                     <div key={repo.id} className='bg-secondary rounded-2xl p-4 flex flex-col items-start gap-4 text-left'>
                         <p className='font-poppins font-bold'>{repo.name}</p>
+                        <span className='text-xs text-muted-foreground border border-muted-foreground rounded-full px-2 py-1'>{repo.language}</span>
                         <p className='text-sm'>{repo.description}</p>
                         <Link href={repo.html_url} target="_blank" className='text-sm text-primary hover:underline'>View Repository</Link>
                     </div>
